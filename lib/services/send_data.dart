@@ -14,7 +14,9 @@ class SendData {
   Future<http.Response> goGet(String url) async {
     final response = await http.get(
       Uri.parse(url),
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json",
+      },
     );
 
     return response;

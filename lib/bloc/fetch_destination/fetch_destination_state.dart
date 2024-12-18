@@ -22,3 +22,18 @@ final class FetchDestinationDone extends FetchDestinationState {
 final class FetchDestinationLoading extends FetchDestinationState {}
 
 final class FetchDestinationError extends FetchDestinationState {}
+
+// ignore: must_be_immutable
+final class SearchDestinationDone extends FetchDestinationState {
+  Object? result;
+
+  SearchDestinationDone({required this.result});
+
+  @override
+  List<Object> get props => [result!];
+}
+
+final class SearchDestinationBlank extends FetchDestinationState {}
+
+final class SearchDestinationLoading extends FetchDestinationState {}
+

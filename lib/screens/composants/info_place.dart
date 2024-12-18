@@ -5,6 +5,6 @@ class InfoPlace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  
+    return Card();
   }
 }

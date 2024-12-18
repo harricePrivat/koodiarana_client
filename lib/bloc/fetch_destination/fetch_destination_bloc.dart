@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:koodiarana_client/services/send_data.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:latlong2/latlong.dart';
 part 'fetch_destination_event.dart';
 part 'fetch_destination_state.dart';
@@ -29,5 +31,27 @@ class FetchDestinationBloc
         emit(FetchDestinationError());
       }
     });
+
+    on<OnSearchDestination>(
+      (event, emit) async {
+        emit(FetchDestinationLoading());
+        try {
+          final result = await http.get(Uri.parse(
+              'https://nominatim.openstreetmap.org/search?q=${event.searchDestination!}&format=json&addressdetails=1&limit=5&viewbox=47.46,-19.02,47.56,-18.78&bounded=1'));
+          if (result.statusCode == 200) {
+            final object = jsonDecode(result.body);
+            if (object is List && object.isNotEmpty) {
+              emit(SearchDestinationDone(result: object));
+            } else {
+              emit(SearchDestinationBlank());
+              emit(FetchDestinationInitial());
+            }
+          }
+        } catch (e) {
+          print(e);
+          emit(FetchDestinationError());
+        }
+      },
+    );
   }
 }
