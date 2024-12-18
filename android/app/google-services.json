@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "432176851605",
+    "project_id": "koodiaranaclient",
+    "storage_bucket": "koodiaranaclient.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432176851605:android:618d00fdbc383bb666c99c",
+        "android_client_info": {
+          "package_name": "com.example.koodiaranaClient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432176851605-1rti6e3doau6d8fp0ui502ho3o5ncd2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQjFtYnwIpMPJpUX1XJW7j0RiXywE4drQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432176851605-1rti6e3doau6d8fp0ui502ho3o5ncd2f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "432176851605-cb344hmeholfhuos9n7qehua88enj07i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.koodiaranaClient"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432176851605:android:c1a918a659d64e0a66c99c",
+        "android_client_info": {
+          "package_name": "com.example.koodiarana_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432176851605-1rti6e3doau6d8fp0ui502ho3o5ncd2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQjFtYnwIpMPJpUX1XJW7j0RiXywE4drQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432176851605-1rti6e3doau6d8fp0ui502ho3o5ncd2f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "432176851605-cb344hmeholfhuos9n7qehua88enj07i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.koodiaranaClient"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
