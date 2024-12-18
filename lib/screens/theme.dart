@@ -19,8 +19,8 @@ class AppTheme {
     ),
     textTheme: TextTheme(
         bodyLarge: GoogleFonts.openSans(
-          fontSize: 14.0,
-          fontWeight: FontWeight.w700,
+          fontSize: 23.0,
+          fontWeight: FontWeight.w300,
           color: Colors.black,
         ),
         displayLarge: GoogleFonts.openSans(
@@ -79,7 +79,7 @@ class AppTheme {
     ),
     textTheme: TextTheme(
         bodyLarge: GoogleFonts.openSans(
-          fontSize: 14.0,
+          fontSize: 23.0,
           fontWeight: FontWeight.w700,
           color: Colors.white,
         ),
