@@ -110,6 +110,9 @@ class _PageMapsState extends State<PageMaps> {
                           size: 35,
                         ));
                   });
+                  context.read<FetchDestinationBloc>().add(onTapDestination(
+                      destination: LatLng(latLng.latitude, latLng.longitude),
+                      source: _currentPosition!));
                 },
                 loading: false,
                 destination: destination,

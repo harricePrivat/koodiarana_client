@@ -11,6 +11,7 @@ part 'fetch_destination_state.dart';
 class FetchDestinationBloc
     extends Bloc<FetchDestinationEvent, FetchDestinationState> {
   FetchDestinationBloc() : super(FetchDestinationInitial()) {
+    //------------------------------------------------------------------//
     on<onTapDestination>((event, emit) async {
       emit(FetchDestinationLoading());
       try {
@@ -32,16 +33,22 @@ class FetchDestinationBloc
       }
     });
 
+    //---------------------------------------------------------------------//
+
     on<OnSearchDestination>(
       (event, emit) async {
         emit(FetchDestinationLoading());
         try {
+          final rSource = await SendData().goGet(
+              'https://nominatim.openstreetmap.org/reverse?format=json&lat=${event.source!.latitude}&lon=${event.source!.longitude}');
           final result = await http.get(Uri.parse(
               'https://nominatim.openstreetmap.org/search?q=${event.searchDestination!}&format=json&addressdetails=1&limit=5&viewbox=47.46,-19.02,47.56,-18.78&bounded=1'));
-          if (result.statusCode == 200) {
-            final object = jsonDecode(result.body);
-            if (object is List && object.isNotEmpty) {
-              emit(SearchDestinationDone(result: object));
+          if (result.statusCode == 200 && rSource.statusCode == 200) {
+            final source = jsonDecode(rSource.body);
+            final destination = jsonDecode(result.body);
+            if (destination is List && destination.isNotEmpty) {
+              emit(SearchDestinationDone(
+                  source: source, destination: destination));
             } else {
               emit(SearchDestinationBlank());
               emit(FetchDestinationInitial());

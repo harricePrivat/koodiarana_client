@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:koodiarana_client/bloc/fetch_destination/fetch_destination_bloc.dart';
 import 'package:koodiarana_client/screens/pages/loading.dart';
+import 'package:koodiarana_client/screens/pages/reservation.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -16,8 +16,10 @@ class MapFlutter extends StatefulWidget {
   LatLng? currentPosition;
   bool? loading;
   Marker? destination;
+  LatLng? myDestination;
   MapFlutter(
       {super.key,
+      this.myDestination,
       this.onTapMap,
       this.destination,
       this.loading,
@@ -28,8 +30,6 @@ class MapFlutter extends StatefulWidget {
 }
 
 class _MapFlutterState extends State<MapFlutter> {
-  LatLng? myDestination;
-
   TextEditingController controllerLocation = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -38,18 +38,42 @@ class _MapFlutterState extends State<MapFlutter> {
     return BlocListener<FetchDestinationBloc, FetchDestinationState>(
       listener: (context, state) {
         if (state is SearchDestinationBlank) {
-          Fluttertoast.showToast(msg: "Lieu introuvable");
+          showDialog(
+              context: context,
+              builder: (context) => Padding(
+                    padding: EdgeInsets.all(16),
+                    child: ShadDialog.alert(
+                      title: const Text('Lieu introuvable'),
+                      description: const Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          'Le lieux que vous cherchez n\'est pas disponible dans Koodiarana',
+                        ),
+                      ),
+                      actions: [
+                        ShadButton(
+                          child: const Text('OK'),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                  ));
         } else if (state is SearchDestinationDone) {
-          Fluttertoast.showToast(msg: "Vous etes maintenant a Mahamasina");
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Reservation(
+                      source: state.source, destination: state.destination)));
+          // Fluttertoast.showToast(msg: "Vous etes maintenant a Mahamasina");
         }
       },
       child: Stack(
         children: [
           FlutterMap(
               options: MapOptions(
-                initialCenter: myDestination == null
-                    ? widget.currentPosition!
-                    : myDestination!,
+                initialCenter: widget.currentPosition == null
+                    ? widget.myDestination!
+                    : widget.currentPosition!,
                 initialZoom: 15,
                 onTap: widget.onTapMap,
               ),
@@ -83,6 +107,7 @@ class _MapFlutterState extends State<MapFlutter> {
                       onPressed: () {
                         context.read<FetchDestinationBloc>().add(
                             OnSearchDestination(
+                                source: widget.currentPosition,
                                 searchDestination: controllerLocation.text));
                         controllerLocation.clear();
                       },

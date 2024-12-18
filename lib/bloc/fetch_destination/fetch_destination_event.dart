@@ -20,7 +20,8 @@ class onTapDestination extends FetchDestinationEvent {
 // ignore: must_be_immutable
 class OnSearchDestination extends FetchDestinationEvent {
   String? searchDestination;
-  OnSearchDestination({required this.searchDestination});
+  LatLng? source;
+  OnSearchDestination({required this.searchDestination, required this.source});
 
   @override
   List<Object> get props => [searchDestination!];
