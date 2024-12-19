@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:koodiarana_client/screens/composants/activity.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -10,19 +11,23 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 16,
-        children: [
-          Text(
-            "Aucune activité récente",
-            textAlign: TextAlign.center,
-            style: textTheme.displaySmall,
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 16,
+          children: [
+            Activity(),
+            Activity(), Activity(), Activity(), Activity(), Activity()
+
+            // Text(
+            //   "Aucune activité récente",
+            //   textAlign: TextAlign.center,
+            //   style: textTheme.displaySmall,
+            // ),
+          ],
+        ),
       ),
     );
   }
