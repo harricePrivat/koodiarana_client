@@ -13,6 +13,7 @@ class ListChauffeurs extends StatefulWidget {
 class _ListChauffeursState extends State<ListChauffeurs> {
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final user = Provider.of<User?>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
@@ -21,16 +22,43 @@ class _ListChauffeursState extends State<ListChauffeurs> {
         body: Padding(
           padding: EdgeInsets.all(16.00),
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                CardChauffeur(
-                    pathImages: user!.photoURL!, nom: "Brice", niveau: "L3"),
-                CardChauffeur(
-                    pathImages: user.photoURL!, nom: "Brice", niveau: "L3"),
-                CardChauffeur(
-                    pathImages: user.photoURL!, nom: "Brice", niveau: "L3"),
-              ],
-            ),
+            child: Column(spacing: 16, children: [
+              Text("Voici la liste des chauffeurs disponibles:",
+                  style: textTheme.titleLarge),
+              CardChauffeur(
+                pathImages: user!.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(
+                pathImages: user.photoURL!,
+                nom: "Brice",
+              ),
+              CardChauffeur(pathImages: user.photoURL!, nom: "Brice"),
+            ]),
           ),
         ));
   }

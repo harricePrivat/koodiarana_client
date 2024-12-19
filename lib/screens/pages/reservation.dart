@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:koodiarana_client/screens/composants/info_place.dart';
 import 'package:koodiarana_client/screens/composants/text_area.dart';
 import 'package:koodiarana_client/screens/composants/time_picker.dart';
+import 'package:koodiarana_client/screens/pages/list_chauffeurs.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 // ignore: must_be_immutable
@@ -15,7 +16,7 @@ class Reservation extends StatefulWidget {
 
 class _ReservationState extends State<Reservation> {
   TextEditingController controller = TextEditingController();
-  ShadTimeOfDay timeOfDay=ShadTimeOfDay.now();
+  ShadTimeOfDay timeOfDay = ShadTimeOfDay.now();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -50,8 +51,10 @@ class _ReservationState extends State<Reservation> {
                   ShadButton(
                     child: Text("Réservez votre déplacement "),
                     onPressed: () {
-                      print(timeOfDay);
-                      print(controller.text);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ListChauffeurs()));
                     },
                   )
                 ],
