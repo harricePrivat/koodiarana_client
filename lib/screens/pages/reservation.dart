@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koodiarana_client/screens/composants/info_place.dart';
+import 'package:koodiarana_client/screens/composants/text_area.dart';
+import 'package:koodiarana_client/screens/composants/time_picker.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 // ignore: must_be_immutable
@@ -12,11 +14,11 @@ class Reservation extends StatefulWidget {
 }
 
 class _ReservationState extends State<Reservation> {
+  TextEditingController controller = TextEditingController();
+  ShadTimeOfDay timeOfDay=ShadTimeOfDay.now();
   @override
   Widget build(BuildContext context) {
-    print("Voici la destination : ${widget.destination['display_name']}");
-    print("Voici la source : ${widget.source['display_name']}");
-
+    final theme = Theme.of(context);
     return Scaffold(
         appBar: AppBar(
           title: Text("Réservation"),
@@ -28,14 +30,29 @@ class _ReservationState extends State<Reservation> {
               child: Column(
                 spacing: 16,
                 children: [
+                  Text(
+                    "Veuillez bien lire les informations sur votre réservation avant de cliquez sur le bouton de réservation. Et notez bien que la réservation n'est disponible qu'aujourd'hui",
+                    style: theme.textTheme.titleLarge,
+                  ),
+                  TimePicker(
+                    label: "Heure de départ:",
+                    changeTimeOfDay: (value) {
+                      timeOfDay = value;
+                    },
+                  ),
                   InfoPlace(
                       title: "Localisation",
                       data: widget.source['display_name']!),
                   InfoPlace(
                       title: "Destination",
                       data: widget.destination['display_name']!),
+                  TextArea(label: "Description", controller: controller),
                   ShadButton(
                     child: Text("Réservez votre déplacement "),
+                    onPressed: () {
+                      print(timeOfDay);
+                      print(controller.text);
+                    },
                   )
                 ],
               ),

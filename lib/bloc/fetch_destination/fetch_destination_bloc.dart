@@ -48,7 +48,7 @@ class FetchDestinationBloc
             final destination = jsonDecode(result.body);
             if (destination is List && destination.isNotEmpty) {
               emit(SearchDestinationDone(
-                  source: source, destination: destination));
+                  source: source, destination: destination[0]));
             } else {
               emit(SearchDestinationBlank());
               emit(FetchDestinationInitial());
