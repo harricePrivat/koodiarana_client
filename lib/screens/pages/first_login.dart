@@ -23,7 +23,7 @@ class _FirstLoginWork extends State<FirstLogin> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           title: DelayedAnimation(
-            delay: 200,
+            delay: 30,
             child: Text(
               'Koodiarana Tips',
               style: TextStyle(color: color),
@@ -46,7 +46,7 @@ class _FirstLoginWork extends State<FirstLogin> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         DelayedAnimation(
-          delay: 1300,
+          delay: 300,
           child: MaterialButton(
             child: const Text('Terminé'),
             onPressed: () {
@@ -90,7 +90,7 @@ class _FirstLoginWork extends State<FirstLogin> {
         children: [
           Expanded(
               child: DelayedAnimation(
-            delay: 500,
+            delay: 225,
             child: Image(
               fit: BoxFit.fitWidth,
               image: imageProvider,
@@ -113,7 +113,7 @@ class _FirstLoginWork extends State<FirstLogin> {
 
   Widget buildIndicator(Color color) {
     return DelayedAnimation(
-        delay: 1300,
+        delay: 300,
         child: SmoothPageIndicator(
           controller: controller,
           count: 3,

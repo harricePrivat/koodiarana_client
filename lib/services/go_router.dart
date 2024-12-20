@@ -19,7 +19,6 @@ class GoRouters {
       final user = Provider.of<User?>(context);
       final firstLogin = Provider.of<AppManager>(context).getLogin;
       if (user == null) {
-        Provider.of<NavigationManager>(context,listen: false).goToFirst();
         return '/login';
       } else {
         if (firstLogin) {

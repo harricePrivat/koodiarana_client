@@ -52,7 +52,6 @@ class _Page1State extends State<Page2> {
                               "assets/Logo_koodiarana.png",
                             ),
                             user.photoURL.toString(),
-                            //   'https://i.pravatar.cc/160',
                             size: Size(65, 65),
                           )
                         ],
@@ -145,6 +144,8 @@ class _Page1State extends State<Page2> {
                   ShadButton(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
+                      Provider.of<NavigationManager>(context, listen: false)
+                          .goToFirst();
                     },
                     backgroundColor: Colors.grey,
                     decoration: ShadDecoration(color: Colors.grey),
