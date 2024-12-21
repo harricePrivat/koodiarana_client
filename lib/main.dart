@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
+import 'package:koodiarana_client/bloc/change_password/change_password_bloc.dart';
 import 'package:koodiarana_client/bloc/fetch_destination/fetch_destination_bloc.dart';
+import 'package:koodiarana_client/bloc/get_otp/get_otp_bloc.dart';
 import 'package:koodiarana_client/bloc/signInGoogle/sign_in_google_bloc.dart';
+import 'package:koodiarana_client/bloc/test_otp/test_otp_bloc.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
 import 'package:koodiarana_client/providers/connection_manager.dart';
@@ -36,7 +39,10 @@ void main() async {
           child: MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => SignInGoogleBloc()),
-              BlocProvider(create: (context) => FetchDestinationBloc())
+              BlocProvider(create: (context) => FetchDestinationBloc()),
+              BlocProvider(create: (context) => GetOtpBloc()),
+              BlocProvider(create: (context) => TestOtpBloc()),
+              BlocProvider(create: (context) => ChangePasswordBloc())
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

@@ -23,7 +23,6 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return ShadInputFormField(
       id: 'mdp',
       label: Text("mot de passe"),
@@ -32,15 +31,6 @@ class _PasswordInputState extends State<PasswordInput> {
       placeholder: const Text('*******'),
       obscureText: obscure,
       decoration: ShadDecoration(
-          // label: Text(
-          //   'Mot de passe',
-          //   style: textTheme.titleSmall,
-          // ),
-          // border: const ShadBorder(
-          //     borderSide: BorderSide(width: 0.2),
-          //     borderRadius: BorderRadius.all(Radius.circular(8))),
-          // hintText: '*******',
-
           ),
       prefix: Padding(
         padding: const EdgeInsets.all(4.0),
