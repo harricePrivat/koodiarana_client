@@ -41,6 +41,7 @@ class _FirstLoginWork extends State<FirstLogin> {
     );
   }
 
+
   Widget buildActionButtons(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -50,7 +51,7 @@ class _FirstLoginWork extends State<FirstLogin> {
           child: MaterialButton(
             child: const Text('Terminé'),
             onPressed: () {
-               Provider.of<AppManager>(context, listen: false).firstLoginDone();
+              Provider.of<AppManager>(context, listen: false).firstLoginDone();
             },
           ),
         )

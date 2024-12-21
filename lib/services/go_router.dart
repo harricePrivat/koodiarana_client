@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
-import 'package:koodiarana_client/providers/navigation_manager.dart';
 import 'package:koodiarana_client/screens/pages/accueil.dart';
 import 'package:koodiarana_client/screens/pages/first_login.dart';
 import 'package:koodiarana_client/screens/pages/page_login.dart';
