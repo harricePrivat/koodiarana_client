@@ -28,7 +28,8 @@ class _ChangePassword extends State<ChangePassword> {
           listener: (context, state) {
             if (state is ChangePasswordDone) {
               Navigator.pop(context);
-            } else {
+            }
+            if (state is ChangePasswordError) {
               showDialog(
                   context: context,
                   builder: (context) => Padding(

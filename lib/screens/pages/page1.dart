@@ -11,22 +11,27 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 16,
-          children: [
-            Activity(),
-            Activity(), Activity(), Activity(), Activity(), Activity()
+    return RefreshIndicator(
+      onRefresh: () {
+        return Future.delayed(Duration(seconds: 1));
+      },
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 16,
+            children: [
+              Activity(),
+              Activity(), Activity(), Activity(), Activity(), Activity()
 
-            // Text(
-            //   "Aucune activité récente",
-            //   textAlign: TextAlign.center,
-            //   style: textTheme.displaySmall,
-            // ),
-          ],
+              // Text(
+              //   "Aucune activité récente",
+              //   textAlign: TextAlign.center,
+              //   style: textTheme.displaySmall,
+              // ),
+            ],
+          ),
         ),
       ),
     );

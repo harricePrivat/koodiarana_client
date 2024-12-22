@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/screens/pages/accueil.dart';
@@ -15,7 +15,7 @@ class GoRouters {
       GoRoute(path: '/accueil', builder: (context, state) => Accueil()),
     ],
     redirect: (context, state) {
-      final user = Provider.of<User?>(context);
+      final user = Provider.of<AppManager>(context).getUsers;
       final firstLogin = Provider.of<AppManager>(context).getLogin;
       if (user == null) {
         return '/login';

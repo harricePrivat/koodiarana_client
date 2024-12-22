@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
@@ -21,7 +20,7 @@ class Page2 extends StatefulWidget {
 class _Page1State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User?>(context, listen: false);
+    final user = Provider.of<AppManager>(context, listen: false).getUsers;
     final theme = Theme.of(context);
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -43,15 +42,15 @@ class _Page1State extends State<Page2> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            child: Text(user!.displayName.toString(),
-                                style: textTheme.titleLarge),
+                            child:
+                                Text(user!.prenom, style: textTheme.titleLarge),
                           ),
                           //Icon(Icons.person, size: 50)
                           ShadAvatar(
                             placeholder: Image.asset(
                               "assets/Logo_koodiarana.png",
                             ),
-                            user.photoURL.toString(),
+                            "assets/Logo_koodiarana.png",
                             size: Size(65, 65),
                           )
                         ],
@@ -143,7 +142,8 @@ class _Page1State extends State<Page2> {
                   ),
                   ShadButton(
                     onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
+                      Provider.of<AppManager>(context, listen: false)
+                          .disconnected();
                       Provider.of<NavigationManager>(context, listen: false)
                           .goToFirst();
                     },

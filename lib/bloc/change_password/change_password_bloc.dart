@@ -20,6 +20,7 @@ class ChangePasswordBloc
 
         if (response.statusCode == 200) {
           final body = jsonDecode(response.body);
+          print(body);
           if ("OK".compareTo(body['message']) == 0) {
             emit(ChangePasswordDone());
           } else {

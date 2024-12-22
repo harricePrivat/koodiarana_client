@@ -7,6 +7,7 @@ import 'package:koodiarana_client/bloc/fetch_destination/fetch_destination_bloc.
 import 'package:koodiarana_client/bloc/get_otp/get_otp_bloc.dart';
 import 'package:koodiarana_client/bloc/signInGoogle/sign_in_google_bloc.dart';
 import 'package:koodiarana_client/bloc/test_otp/test_otp_bloc.dart';
+import 'package:koodiarana_client/bloc/to_login/to_login_bloc.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
 import 'package:koodiarana_client/providers/connection_manager.dart';
@@ -42,7 +43,8 @@ void main() async {
               BlocProvider(create: (context) => FetchDestinationBloc()),
               BlocProvider(create: (context) => GetOtpBloc()),
               BlocProvider(create: (context) => TestOtpBloc()),
-              BlocProvider(create: (context) => ChangePasswordBloc())
+              BlocProvider(create: (context) => ChangePasswordBloc()),
+              BlocProvider(create: (context) => ToLoginBloc())
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
