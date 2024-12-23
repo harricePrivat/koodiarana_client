@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 // ignore: must_be_immutable
 class TextArea extends StatefulWidget {
@@ -18,13 +19,17 @@ class _TextAreaState extends State<TextArea> {
       spacing: 8,
       children: [
         Text(widget.label!, style: textTheme.bodyLarge),
-        TextField(
+        ShadInputFormField(
           controller: widget.controller,
           maxLines: 3,
           style: textTheme.titleSmall,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
+          decoration: const ShadDecoration(
+            border: ShadBorder(),
           ),
+          validator: (v) {
+            if (v.isEmpty) return 'ce champ est obligatoire';
+            return null;
+          },
         )
       ],
     );

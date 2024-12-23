@@ -17,6 +17,7 @@ class Reservation extends StatefulWidget {
 class _ReservationState extends State<Reservation> {
   TextEditingController controller = TextEditingController();
   ShadTimeOfDay timeOfDay = ShadTimeOfDay.now();
+  final formKey = GlobalKey<ShadFormState>();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -47,14 +48,20 @@ class _ReservationState extends State<Reservation> {
                   InfoPlace(
                       title: "Destination",
                       data: widget.destination['display_name']!),
-                  TextArea(label: "Description", controller: controller),
+                  ShadForm(
+                    key: formKey,
+                    child:
+                        TextArea(label: "Description", controller: controller),
+                  ),
                   ShadButton(
                     child: Text("Réservez votre déplacement "),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ListChauffeurs()));
+                      if (formKey.currentState!.saveAndValidate()) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ListChauffeurs()));
+                      }
                     },
                   )
                 ],
