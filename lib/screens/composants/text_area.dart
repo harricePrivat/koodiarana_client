@@ -20,11 +20,17 @@ class _TextAreaState extends State<TextArea> {
       children: [
         Text(widget.label!, style: textTheme.bodyLarge),
         ShadInputFormField(
+          id: "description",
           controller: widget.controller,
           maxLines: 3,
           style: textTheme.titleSmall,
           decoration: const ShadDecoration(
-            border: ShadBorder(),
+            border: ShadBorder(
+         top: BorderSide(color: Colors.grey),
+              bottom: BorderSide(color: Colors.grey),
+              left: BorderSide(color: Colors.grey),
+              right: BorderSide(color: Colors.grey),
+            ),
           ),
           validator: (v) {
             if (v.isEmpty) return 'ce champ est obligatoire';
