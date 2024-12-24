@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:koodiarana_client/screens/composants/input_date.dart';
 import 'package:koodiarana_client/screens/composants/input_form.dart';
+import 'package:koodiarana_client/screens/composants/input_num.dart';
+import 'package:koodiarana_client/screens/composants/password_input.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class AjoutUtilisateur extends StatefulWidget {
@@ -13,6 +16,10 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
   final formKey = GlobalKey<ShadFormState>();
   TextEditingController nom = TextEditingController();
   TextEditingController prenom = TextEditingController();
+  TextEditingController num = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController rePassword = TextEditingController();
+  DateTime pickedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +49,18 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
                         label: "votre prénom *",
                         placeholder: "entrez votre prénom",
                         controller: prenom),
+                    InputDate(
+                      datePicker: pickedDate,
+                      onDateChanged: (value) {
+                        setState(() {
+                          pickedDate = value!;
+                        });
+                      },
+                    ),
                     ShadInputFormField(
                       label: Text("votre email *"),
                       placeholder: Text('entrez votre mail'),
+                      keyboardType: TextInputType.emailAddress,
                       decoration: ShadDecoration(
                           border: ShadBorder(
                         top: BorderSide(color: Colors.grey),
@@ -61,8 +77,18 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
                         return null;
                       },
                     ),
+                    InputNum(controller: num),
+                    PasswordInput(
+                        rePassword: false,
+                        controller: password,
+                        color: theme.primaryColor),
+                    PasswordInput(
+                        rePassword: false,
+                        controller: rePassword,
+                        color: theme.primaryColor),
                     ShadButton(
                       onPressed: () {
+                        print(pickedDate);
                         if (formKey.currentState!.saveAndValidate()) {}
                       },
                       child: Text("Créer mon compte"),

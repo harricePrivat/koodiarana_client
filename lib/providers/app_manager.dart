@@ -22,9 +22,9 @@ class AppManager extends ChangeNotifier {
 
   Users? get getUsers => users;
 
-  void connected(Users user) async {
-    this.users = user;
-    await AppSecurityCache().addConnection(user);
+  void connected(Users users) async {
+    this.users = users;
+    await AppSecurityCache().addConnection(users);
     notifyListeners();
   }
 

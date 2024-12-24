@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
@@ -43,7 +45,8 @@ class _Page1State extends State<Page2> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            child: Text("${user!.prenom} ${user.nom}", style: textTheme.titleLarge),
+                            child: Text("${user!.prenom} ${user.nom}",
+                                style: textTheme.titleLarge),
                           ),
                           //Icon(Icons.person, size: 50)
                           ShadAvatar(
@@ -152,6 +155,7 @@ class _Page1State extends State<Page2> {
                           .disconnected();
                       Provider.of<NavigationManager>(context, listen: false)
                           .goToFirst();
+                      await FirebaseAuth.instance.signOut();
                     },
                     backgroundColor: Colors.grey,
                     decoration: ShadDecoration(color: Colors.grey),
