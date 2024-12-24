@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
