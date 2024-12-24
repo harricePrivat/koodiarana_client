@@ -3,6 +3,7 @@ import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
 import 'package:koodiarana_client/screens/composants/parameters.dart';
 import 'package:koodiarana_client/screens/composants/rating.dart';
+import 'package:koodiarana_client/screens/pages/historique.dart';
 import 'package:koodiarana_client/screens/pages/mention_legale.dart';
 import 'package:koodiarana_client/screens/pages/payement.dart';
 import 'package:provider/provider.dart';
@@ -42,8 +43,7 @@ class _Page1State extends State<Page2> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            child:
-                                Text(user!.prenom, style: textTheme.titleLarge),
+                            child: Text("${user!.prenom} ${user.nom}", style: textTheme.titleLarge),
                           ),
                           //Icon(Icons.person, size: 50)
                           ShadAvatar(
@@ -111,6 +111,12 @@ class _Page1State extends State<Page2> {
                     ),
                   ),
                   ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Historique()));
+                    },
                     leading: const Icon(Icons.history),
                     title: const Text(
                       'Historiques',

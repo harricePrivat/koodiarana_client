@@ -26,6 +26,10 @@ class ToLoginBloc extends Bloc<ToLoginEvent, ToLoginState> {
                   datedeNaissance: data['dateDeNaissance'],
                   email: data['email'],
                   phoneNumber: data['num'])));
+        } else if (response.statusCode == 202) {
+          emit(ToLoginError(
+              messsage:
+                  "Votre email est non verifié, veuillez re-créer votre compte"));
         } else {
           emit(ToLoginError(messsage: "Identifiant ou mot de passe incorrect"));
         }
