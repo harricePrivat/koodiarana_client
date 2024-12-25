@@ -37,7 +37,26 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
         body: BlocListener<AjoutUtilisateurBloc, AjoutUtilisateurState>(
           listener: (context, state) {
             if (state is AjoutUtilisateurDone) {
-              Fluttertoast.showToast(msg: "Succes");
+              showDialog(
+                  context: context,
+                  builder: (context) => Padding(
+                        padding: EdgeInsets.all(16),
+                        child: ShadDialog.alert(
+                          title: Text("Créer avec succès !!"),
+                          description: Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Text(
+                              "Un mail de validation a été envoyé",
+                            ),
+                          ),
+                          actions: [
+                            ShadButton(
+                              child: const Text('OK'),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        ),
+                      ));
             }
           },
           child: BlocBuilder<AjoutUtilisateurBloc, AjoutUtilisateurState>(
@@ -106,7 +125,6 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
                             color: theme.primaryColor),
                         ShadButton(
                           onPressed: () {
-                            print(pickedDate);
                             if (formKey.currentState!.saveAndValidate()) {
                               if (password.text.compareTo(rePassword.text) ==
                                   0) {
@@ -120,6 +138,7 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
                                                 pickedDate.toString(),
                                             email: mail.text),
                                         password: password.text));
+                                clearForm();
                               } else {
                                 Fluttertoast.showToast(
                                     msg:
@@ -135,5 +154,14 @@ class _AjoutUtilisateurState extends State<AjoutUtilisateur> {
             );
           }),
         ));
+  }
+
+  void clearForm() {
+    num.clear();
+    nom.clear();
+    prenom.clear();
+    mail.clear();
+    password.clear();
+    rePassword.clear();
   }
 }
