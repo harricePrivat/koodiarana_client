@@ -22,7 +22,8 @@ class AjoutUtilisateurBloc
           "email": event.users!.email,
           "password": event.password,
           "dateDeNaissance": event.users!.datedeNaissance,
-          "emailVerified": false
+          "emailVerified": false,
+          "client": true
         });
         if (response.statusCode == 200) {
           final body = jsonDecode(response.body);
