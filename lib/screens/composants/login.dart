@@ -6,7 +6,7 @@ import 'package:koodiarana_client/bloc/signInGoogle/sign_in_google_event.dart';
 import 'package:koodiarana_client/bloc/to_login/to_login_bloc.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/screens/composants/button_google.dart';
-import 'package:koodiarana_client/screens/pages/ajout_utilisateur.dart';
+import 'package:koodiarana_client/screens/pages/add_user.dart';
 import 'package:koodiarana_client/screens/pages/forgot_password.dart';
 import 'package:koodiarana_client/screens/pages/loading.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +107,7 @@ class _LoginState extends State<Login> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          AjoutUtilisateur()));
+                                          AddUser()));
                             },
                             child: Text(
                               'S\'inscrire',

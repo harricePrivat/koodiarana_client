@@ -7,11 +7,14 @@ import 'package:koodiarana_client/bloc/change_password/change_password_bloc.dart
 import 'package:koodiarana_client/bloc/fetch_destination/fetch_destination_bloc.dart';
 import 'package:koodiarana_client/bloc/get_otp/get_otp_bloc.dart';
 import 'package:koodiarana_client/bloc/signInGoogle/sign_in_google_bloc.dart';
+import 'package:koodiarana_client/bloc/stepper/step_bloc.dart';
 import 'package:koodiarana_client/bloc/test_otp/test_otp_bloc.dart';
 import 'package:koodiarana_client/bloc/to_login/to_login_bloc.dart';
+import 'package:koodiarana_client/bloc/verification_mail/verification_mail_bloc.dart';
 import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
 import 'package:koodiarana_client/providers/connection_manager.dart';
+import 'package:koodiarana_client/providers/stepper.dart';
 import 'package:koodiarana_client/screens/pages/splash_screen.dart';
 import 'package:koodiarana_client/services/authentification.dart';
 import 'package:koodiarana_client/services/go_router.dart';
@@ -32,6 +35,7 @@ void main() async {
     runApp(
       MultiProvider(
           providers: [
+            ChangeNotifierProvider(create: (context) => StepperNotifier()),
             StreamProvider.value(
                 value: AuthService().userConnection, initialData: null),
             ChangeNotifierProvider(create: (context) => NavigationManager()),
@@ -40,6 +44,8 @@ void main() async {
           ],
           child: MultiBlocProvider(
             providers: [
+              BlocProvider(create: (context) => VerificationMailBloc()),
+              BlocProvider(create: (context) => StepBloc()),
               BlocProvider(create: (context) => SignInGoogleBloc()),
               BlocProvider(create: (context) => FetchDestinationBloc()),
               BlocProvider(create: (context) => GetOtpBloc()),

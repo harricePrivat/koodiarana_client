@@ -57,6 +57,8 @@ dependencies:
   flutter_map_tile_caching: ^9.1.4
   flutter_launcher_icons: ^0.14.2
   flutter_secure_storage: ^9.2.2
+  dio: ^5.7.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
