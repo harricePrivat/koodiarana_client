@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
-import 'package:koodiarana_client/bloc/ajout_utilisateur/ajout_utilisateur_bloc.dart';
+// import 'package:koodiarana_client/bloc/ajout_utilisateur/ajout_utilisateur_bloc.dart';
 import 'package:koodiarana_client/bloc/change_password/change_password_bloc.dart';
 import 'package:koodiarana_client/bloc/fetch_destination/fetch_destination_bloc.dart';
 import 'package:koodiarana_client/bloc/get_otp/get_otp_bloc.dart';
@@ -52,7 +52,6 @@ void main() async {
               BlocProvider(create: (context) => TestOtpBloc()),
               BlocProvider(create: (context) => ChangePasswordBloc()),
               BlocProvider(create: (context) => ToLoginBloc()),
-              BlocProvider(create: (context) => AjoutUtilisateurBloc())
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

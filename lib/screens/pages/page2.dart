@@ -6,6 +6,7 @@ import 'package:koodiarana_client/screens/composants/parameters.dart';
 import 'package:koodiarana_client/screens/composants/rating.dart';
 import 'package:koodiarana_client/screens/pages/historique.dart';
 import 'package:koodiarana_client/screens/pages/mention_legale.dart';
+import 'package:koodiarana_client/screens/pages/my_account.dart';
 import 'package:koodiarana_client/screens/pages/payement.dart';
 import 'package:provider/provider.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
@@ -141,6 +142,8 @@ class _Page1State extends State<Page2> {
                     ),
                   ),
                   ListTile(
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyAccount())),
                     leading: const Icon(Icons.person),
                     title: const Text(
                       'Mon compte Koodiarana',

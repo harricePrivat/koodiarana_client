@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:koodiarana_client/bloc/stepper/step_bloc.dart';
 import 'package:koodiarana_client/bloc/verification_mail/verification_mail_bloc.dart';
 import 'package:koodiarana_client/providers/stepper.dart';
-import 'package:koodiarana_client/screens/composants/input_cin.dart';
 import 'package:koodiarana_client/screens/composants/input_date.dart';
 import 'package:koodiarana_client/screens/composants/input_form.dart';
 import 'package:koodiarana_client/screens/composants/input_mail.dart';
@@ -32,7 +31,6 @@ class _AddUserState extends State<AddUser> {
   TextEditingController mail = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController rePassword = TextEditingController();
-  TextEditingController cin = TextEditingController();
 
   DateTime pickedDate = DateTime.now();
   @override
@@ -97,13 +95,11 @@ class _AddUserState extends State<AddUser> {
                                       //   //
                                       // }
                                     }
-                                  } 
-                                 else if (step.currentStep == 2) {
+                                  } else if (step.currentStep == 2) {
                                     // if (formKey4.currentState!.validate()) {
-                                    if (  pdp != null) {
+                                    if (pdp != null) {
                                       context.read<StepBloc>().add(Step4Event(
-                                          email: mail.text,
-                                          pdp: pdp!));
+                                          email: mail.text, pdp: pdp!));
                                       // if (step.currentStep < 4) {
                                       //   step.onChange(step.currentStep + 1);
                                       // } else {
@@ -152,10 +148,8 @@ class _AddUserState extends State<AddUser> {
                           onPressed: state is StepLoading
                               ? null
                               : () {
-                                  context.read<StepBloc>().add(Step4Event(
-                                      email: mail.text,
-                                      pdp: pdp!
-                                     ));
+                                  context.read<StepBloc>().add(
+                                      Step4Event(email: mail.text, pdp: pdp!));
                                 },
                           child: state is StepLoading
                               ? CircularProgressIndicator(
@@ -242,17 +236,21 @@ class _AddUserState extends State<AddUser> {
                             }
                             return Column(
                               children: [
-                                InputCin(
-                                  controller: cin,
-                                  label: "votre cin *",
-                                  placeholder: "entrez votre cin",
-                                ),
+                                // InputCin(
+                                //   controller: cin,
+                                //   label: "votre cin *",
+                                //   placeholder: "entrez votre cin",
+                                // ),
                                 InputNum(controller: num),
                                 InputMail(
                                   mail: mail,
                                   label: "votre mail * ",
                                   placeholder: "entrez votre mail ",
                                 ),
+                                PasswordInput(
+                                    rePassword: false,
+                                    controller: password,
+                                    color: theme.primaryColor),
                                 PasswordInput(
                                     rePassword: false,
                                     controller: password,

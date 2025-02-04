@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:koodiarana_client/providers/app_manager.dart';
 import 'package:koodiarana_client/screens/composants/card_chaffeur.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class _ListChauffeursState extends State<ListChauffeurs> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final user = Provider.of<User?>(context, listen: false);
+    final user = Provider.of<AppManager>(context, listen: false).getUsers;
     return Scaffold(
         appBar: AppBar(
           title: Text("Chauffeurs:"),
@@ -26,38 +26,38 @@ class _ListChauffeursState extends State<ListChauffeurs> {
               Text("Voici la liste des chauffeurs disponibles:",
                   style: textTheme.titleLarge),
               CardChauffeur(
-                pathImages: user!.photoURL!,
+                pathImages: user!.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
               CardChauffeur(
-                pathImages: user.photoURL!,
+                pathImages: user.pdpUrl!,
                 nom: "Brice",
               ),
-              CardChauffeur(pathImages: user.photoURL!, nom: "Brice"),
+              CardChauffeur(pathImages: user.pdpUrl!, nom: "Brice"),
             ]),
           ),
         ));

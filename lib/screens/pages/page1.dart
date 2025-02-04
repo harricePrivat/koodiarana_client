@@ -22,8 +22,8 @@ class _Page1State extends State<Page1> {
             crossAxisAlignment: CrossAxisAlignment.center,
             spacing: 16,
             children: [
-              Activity(),
-              Activity(), Activity(), Activity(), Activity(), Activity()
+              // Activity(),
+              // Activity(), Activity(), Activity(), Activity(), Activity()
 
               // Text(
               //   "Aucune activité récente",
