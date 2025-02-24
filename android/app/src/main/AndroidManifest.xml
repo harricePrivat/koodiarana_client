@@ -10,6 +10,11 @@
         android:label="koodiarana_client"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data
+         android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD26SBDx0y_zVHM30FGrC0BiQm6RrJwpmM"
+    />
         <activity
             android:name=".MainActivity"
             android:exported="true"

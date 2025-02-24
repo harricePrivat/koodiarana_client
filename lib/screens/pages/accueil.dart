@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:koodiarana_client/providers/navigation_manager.dart';
+import 'package:koodiarana_client/screens/pages/google_maps.dart';
 import 'package:koodiarana_client/screens/pages/page1.dart';
 import 'package:koodiarana_client/screens/pages/page2.dart';
-import 'package:koodiarana_client/screens/pages/page_maps.dart';
 import 'package:koodiarana_client/services/connectivity.dart';
 
 import 'package:provider/provider.dart';
@@ -17,8 +17,8 @@ class Accueil extends StatefulWidget {
 }
 
 class _AccueilState extends State<Accueil> {
-  List<Widget> listPages = [Page0(), PageMaps(), Page1(), Page2()];
-  List<String> title = ["Accueil", "Koodiarana Maps", "Activités", "Comptes"];
+  final List<Widget> listPages = [Page0(), GoogleMaps(), Page1(), Page2()];
+  final List<String> title = ["Accueil", "Koodiarana Maps", "Activités", "Comptes"];
 
 
   @override

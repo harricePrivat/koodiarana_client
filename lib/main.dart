@@ -23,10 +23,14 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../screens/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:developer' as developer;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FMTCObjectBoxBackend().initialise();
+  developer.log('Flutter App Started');
+
+  //  Logger.root.level = Level.ALL; // Active tous les logs
   await Firebase.initializeApp();
   await dotenv.load(fileName: '.env');
   await FMTCStore('mapStore').manage.create();

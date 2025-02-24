@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:koodiarana_client/screens/composants/activity.dart';
+// import 'package:koodiarana_client/screens/composants/activity.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
